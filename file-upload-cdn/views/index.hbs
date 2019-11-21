@@ -1,0 +1,15 @@
+<h1>Welcome to the Movie Project</h1>
+
+<a href="/movie/add" style="margin: 20px 0; display: block;">Add a new movie</a>
+
+<div class="movies-wrapper">
+  {{#each movies}}
+    <div class="movie-item">
+      <img src="{{this.imgPath}}" alt="">
+      <h4>{{this.title}}</h4>
+      <p>{{this.description}}</p>
+    </div>
+  {{else}}
+    <p>There are no movies yet! :(</p>
+  {{/each}}
+</div>

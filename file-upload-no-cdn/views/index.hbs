@@ -1,0 +1,111 @@
+<style>
+  div {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+  }
+
+  body {
+    transition: all 0.5s;
+  }
+
+  body.grid #pictures {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 0;
+  }
+
+  body.grid #pictures .picture-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 250px;
+  }
+
+  body h3 {
+    text-align: center;
+    margin: 20px;
+  }
+
+  body.grid #pictures div h3 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.column #pictures {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px 0;
+  }
+
+  body.column #pictures .picture-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  body.column #pictures .picture-container {
+    width: 500px;
+    height: 500px;
+  }
+
+  body.grid #pictures .picture-container {
+    width: 250px;
+    height: 250px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  nav button {
+    margin-right: 10px;
+  }
+
+  nav button:last-child {
+    margin-right: 0;
+  }
+</style>
+
+<nav>
+  <button id="grid">Grid</button>
+  <button id="column">Column</button>
+</nav>
+
+
+<section>
+  <h2>Upload your photo</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="text" name="name">
+    <input type="file" name="photo">
+    <input type="submit" value="Save">
+  </form>
+</section>
+
+<section id="pictures">
+  {{#each pictures}}
+  <div class="pictures-wrapper">
+    <h3>{{ this.name }}</h3>
+    <div class="picture-container" style="background-image: url({{ this.path }})">
+      {{!-- <img src="{{ this.path }}" alt="{{ this.originalName }}" style="border-radius: 50%; height: 500px; width: 500px;" /> --}}
+    </div>
+  </div>
+  {{/each}}
+</section>
+
+<script>
+
+  document.body.className = "column"
+
+  document.querySelector("#grid").onclick = function () {
+    document.body.className = "grid"
+  }
+
+  document.querySelector("#column").onclick = function () {
+    document.body.className = "column"
+  }
+</script>
