@@ -32,7 +32,7 @@
 
 # Goals
 
-- Getting to know your partner for project 2 and share ideas.
+- Getting to know your partner for project 2 and share ideas
 - Analyze and design
 - Think about your project's API backbone
 - Understand how to upload files to your server or Cloudinary
